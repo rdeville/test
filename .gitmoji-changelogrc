@@ -1,0 +1,160 @@
+{
+  "commitMapping": [
+    {
+      "group": "added",
+      "label": "New Features",
+      "emojis": [
+        "sparkles",
+        "tada",
+        "rocket"
+      ]
+    },
+    {
+      "group": "fixed",
+      "label": "Fixed",
+      "emojis": [
+        "bug",
+        "ambulance",
+        "adhesive_bandage",
+        "pencil2"
+      ]
+    },
+    {
+      "group": "changed",
+      "label": "Changed",
+      "emojis": [
+        "art",
+        "zap",
+        "lipstick",
+        "chart_with_upwards_trend",
+        "recycle",
+        "wrench",
+        "rewind",
+        "package",
+        "alien",
+        "truck",
+        "bento",
+        "wheelchair",
+        "speech_balloon",
+        "card_file_box",
+        "children_crossing",
+        "building_construction",
+        "iphone",
+        "mag",
+        "label",
+        "seedling",
+        "dizzy",
+        "stethoscope",
+        "bricks",
+        "technologist",
+        "thread",
+        "safety_vest"
+      ]
+    },
+    {
+      "group": "breaking_changes",
+      "label": "Breaking changes",
+      "emojis": [
+        "boom"
+      ]
+    },
+    {
+      "group": "deprecated",
+      "label": "Deprecated",
+      "emojis": [
+        "wastebasket",
+        "coffin"
+      ]
+    },
+    {
+      "group": "removed",
+      "label": "Removed",
+      "emojis": [
+        "fire"
+      ]
+    },
+    {
+      "group": "security",
+      "label": "Security",
+      "emojis": [
+        "lock",
+        "passport_control"
+      ]
+    },
+    {
+      "group": "documentation",
+      "label": "Documentation",
+      "emojis": [
+        "memo",
+        "bulb",
+        "pencil",
+        "page_facing_up",
+        "camera_flash"
+      ]
+    },
+    {
+      "group": "internationalization",
+      "label": "Internationalization/Localization",
+      "emojis": [
+        "globe_with_meridians"
+      ]
+    },
+    {
+      "group": "dependencies",
+      "label": "Dependencies",
+      "emojis": [
+        "heavy_minus_sign",
+        "heavy_plus_sign",
+        "arrow_down",
+        "arrow_up",
+        "pushpin"
+      ]
+    },
+    {
+      "group": "development",
+      "label": "Development",
+      "emojis": [
+        "white_check_mark",
+        "construction_worker",
+        "green_heart",
+        "rotating_light",
+        "hammer",
+        "see_no_evil",
+        "goal_net",
+        "test_tube"
+      ]
+    },
+    {
+      "group": "useless",
+      "label": "Useless",
+      "emojis": [
+        "bookmark",
+        "closed_lock_with_key",
+        "construction",
+        "poop",
+        "twisted_rightwards_arrows",
+        "beers",
+        "egg"
+      ]
+    },
+    {
+      "group": "misc",
+      "label": "Miscellaneous",
+      "emojis": [
+        "loud_sound",
+        "mute",
+        "alembic",
+        "monocle_face",
+        "necktie",
+        "money_with_wings"
+      ]
+    },
+    {
+      "group": "contributor",
+      "label": "Contributors",
+      "emojis": [
+        "busts_in_silhouette"
+      ]
+    }
+  ]
+}

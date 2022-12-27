@@ -1,0 +1,79 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      # Prevents giant files from being committed.
+      - id: check-added-large-files
+        # Forbids files which have a utf-8 byte-order marker.
+      - id: check-byte-order-marker
+        # Checks for files that would conflict in case-insensitive filesystems.
+      - id: check-case-conflict
+        # Ensures that (non-binary) executables have a shebang.
+      - id: check-executables-have-shebangs
+        # Checks json files for parseable syntax.
+      - id: check-json
+        # Ensures that (non-binary) files with a shebang are executable.
+      - id: check-shebang-scripts-are-executable
+        # Sets a standard for formatting json files.
+      - id: pretty-format-json
+        args:
+          - --autofix
+          - --no-sort-keys
+        # Checks for files that contain merge conflict strings.
+      - id: check-merge-conflict
+        # Checks for symlinks which do not point to anything.
+      - id: check-symlinks
+        # Checks toml files for parseable syntax.
+      - id: check-toml
+        # Checks yaml files for parseable syntax.
+      - id: check-yaml
+        # Detects the presence of private keys.
+      - id: detect-private-key
+        # Ensures that a file is either empty, or ends with one newline.
+      - id: end-of-file-fixer
+        # Removes utf-8 byte order marker.
+      - id: fix-byte-order-marker
+        # Prevents addition of new git submodules.
+      - id: forbid-new-submodules
+        # Forbids any submodules in the repository
+      - id: forbid-submodules
+        # Don't commit to branch
+      - id: no-commit-to-branch
+        # Trims trailing whitespace.
+      - id: trailing-whitespace
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.7.1
+    hooks:
+      - id: prettier
+        exclude: "^.*.(json|ts|COMMIT_EDITMSG)"
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.16 # Use the ref you want to point at
+    hooks:
+      - id: mdformat
+        # Optionally add plugins
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-black
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.32.2
+    hooks:
+      - id: markdownlint
+  - repo: local
+    hooks:
+      - id: npm-lint
+        name: npm-lint
+        entry: bash -c 'yarn lint'
+        language: system
+        pass_filenames: false
+        files: "(.*.(tj)sx?|tsconfig.json|package.json|.eslintrc.json)$"
+      - id: npm-test
+        name: npm-test
+        entry: bash -c 'yarn test'
+        language: system
+        pass_filenames: false
+        files: "(.*.(tj)sx?|tsconfig.json|package.json|.eslintrc.json)$"
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.3.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]

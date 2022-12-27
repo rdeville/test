@@ -1,0 +1,8 @@
+commitlint
+fakename
+FAKEVALUE
+gitmoji
+pulumi
+Pulumi
+subkey
+WRONGTOKEN
