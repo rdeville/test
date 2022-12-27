@@ -1,71 +1,17 @@
 {{#if compareUrl}}
-# [v{{nextRelease.version}}]({{compareUrl}}) ({{datetime "UTC:yyyy-mm-dd"}})
+## [v{{nextRelease.version}}]({{compareUrl}}) ({{datetime "UTC:yyyy-mm-dd"}})
 {{else}}
-# v{{nextRelease.version}} ({{datetime "UTC:yyyy-mm-dd"}})
+## v{{nextRelease.version}} ({{datetime "UTC:yyyy-mm-dd"}})
 {{/if}}
 
 {{#with commits}}
-{{#if sparkles}}
-## ✨ New Features
-{{#each sparkles}}
-  * {{> commitTemplate}}
-{{/each}}
-{{/if}}
-
-{{#if bug}}
-## 🐛 Bug Fixes
-{{#each bug}}
-  * {{> commitTemplate}}
-{{/each}}
-{{/if}}
-
-{{#if ambulance}}
-## 🚑 Critical Hotfixes
-{{#each ambulance}}
-  * {{> commitTemplate}}
-{{/each}}
-{{/if}}
-
-{{#if lock}}
-## 🔒 Security Issues
-{{#each lock}}
-  * {{> commitTemplate}}
-{{/each}}
-{{/if}}
-
-{{#if boom}}
-## 💥 Breaking Changes
-{{#each boom}}
-  * {{> commitTemplate}}
-{{/each}}
-{{/if}}
-{{/with}}
-
-{{#if compareUrl}}
-# [v{{nextRelease.version}}]({{compareUrl}}) ({{datetime "UTC:yyyy-mm-dd"}})
-{{else}}
-# v{{nextRelease.version}} ({{datetime "UTC:yyyy-mm-dd"}})
-{{/if}}
-
-{{#with commits}}
-{{#if major}}
-### 💥 Breaking Changes
-{{#each major}}
-- {{> commitTemplate}}
-{{/each}}
-{{/if}}
-
 {{#if minor}}
 ### ✨ New Features
-{{#each minor}}
-- {{> commitTemplate}}
-{{/each}}
-{{/if}}
 
-{{#if patch}}
-### Others
-{{#each patch}}
-- {{gitmoji}} {{> commitTemplate}}
+{{#each minor}}
+  * [`{{commit.short}}`](https://github.com/{{owner}}/{{repo}}/commit/{{commit.short}}) {{gitmoji}}{{subject}} {{#if issues}}(Issues:{{#each issues}} [`{{text}}`]({{link}}){{/each}}){{/if}}{{#if wip}}{{#each wip}}
+    * {{commit}}[`{{commit.short}}`](https://github.com/{{owner}}/{{repo}}/commit/{{commit.short}}) {{gitmoji}}{{subject}}{{/each}}
+{{/if}}
 {{/each}}
 {{/if}}
 {{/with}}
