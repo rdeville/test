@@ -1,5 +1,7 @@
 # CHANGELOG
 
+## [v0.2.0](https://github.com/rdeville/test/compare/0.1.0...0.2.0) (2022-12-27)
+
 ## [v0.1.0](https://github.com/rdeville/test/compare/0.0.0...0.1.0) (2022-12-27)
 
 ## [v0.1.0](https://github.com/rdeville/test/compare/0.0.0...0.1.0) (2022-12-27)
