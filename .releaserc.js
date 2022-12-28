@@ -60,7 +60,7 @@ module.exports = {
                   }
                 }
                 if (
-                  currRule === "not_defined" &&
+                  currRule == "not_defined" &&
                   !Object.prototype.hasOwnProperty.call(commitlist, currRule)
                 ) {
                   commitlist[currRule] = [];
