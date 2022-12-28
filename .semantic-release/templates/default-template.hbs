@@ -17,16 +17,22 @@
 {{/with}}
 
 {{commitlist commits}}
+{{#if (hasKey commits "major")}}
 ### Major
-{{#each commits}}
-{{#if (isSemver this.semver "major")}}
-{{this.subject}}
-{{/if}}
+{{#with commits}}
+{{#each major}}
+{{commit.subject}}
 {{/each}}
+{{/with}}
+{{/if}}
 
+
+{{commitlist commits}}
+{{#if (hasKey commits "minor")}}
 ### Minor
-{{#each commits}}
-{{#if (isSemver this.semver "minor")}}
-{{this.subject}}
-{{/if}}
+{{#with commits}}
+{{#each minor}}
+{{commit.subject}}
 {{/each}}
+{{/with}}
+{{/if}}

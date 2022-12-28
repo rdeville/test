@@ -44,21 +44,22 @@ module.exports = {
             },
             commitlist: function (commits, options) {
               let commitlist = {};
-              let currRule = "";
+              let currRule = "others";
               const rules = RULES;
               for (const iGitmoji in commits) {
-                currRule = "";
+                currRule = "others";
                 for (const iRule in rules) {
-                  console.log(iRule);
-                  console.log(rules[iRule]);
-                  console.log(iGitmoji);
-                  if (iGitmoji in rules[iRule]) {
-                    console.log("===");
-                    if (Object.prototype.hasOwnProperty.call(commitlist, iRule))
+                  if (rules[iRule].includes(iGitmoji)) {
+                    if (
+                      !Object.prototype.hasOwnProperty.call(commitlist, iRule)
+                    ) {
                       commitlist[iRule] = [];
+                    }
                     currRule = iRule;
+                    break;
                   }
                 }
+                console.log(currRule);
                 for (
                   let idxCommit = 0;
                   idxCommit < commits[iGitmoji].length;
@@ -67,8 +68,13 @@ module.exports = {
                   commitlist[currRule].push(commits[iGitmoji][idxCommit]);
                 }
               }
+              console.log(commitlist);
               options.data.root["commits"] = commitlist;
-              console.log(options.data.root);
+            },
+            hasKey: function (object, key) {
+              if (Object.prototype.hasOwnProperty.call(object, key))
+                return true;
+              return false;
             },
             isSemver: function (gitmojiSemver, rtype) {
               if (gitmojiSemver == rtype) return true;
