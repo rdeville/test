@@ -36,3 +36,14 @@
 {{/each}}
 {{/with}}
 {{/if}}
+
+
+{{commitlist commits}}
+{{#if (hasKey commits "patch")}}
+### Patch
+{{#with commits}}
+{{#each patch}}
+{{commit.subject}}
+{{/each}}
+{{/with}}
+{{/if}}

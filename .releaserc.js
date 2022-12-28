@@ -44,10 +44,10 @@ module.exports = {
             },
             commitlist: function (commits, options) {
               let commitlist = {};
-              let currRule = "others";
+              let currRule = "not_defined";
               const rules = RULES;
               for (const iGitmoji in commits) {
-                currRule = "others";
+                currRule = "not_defined";
                 for (const iRule in rules) {
                   if (rules[iRule].includes(iGitmoji)) {
                     if (
@@ -59,7 +59,12 @@ module.exports = {
                     break;
                   }
                 }
-                console.log(currRule);
+                if (
+                  currRule === "not_defined" &&
+                  !Object.prototype.hasOwnProperty.call(commitlist, currRule)
+                ) {
+                  commitlist[currRule] = [];
+                }
                 for (
                   let idxCommit = 0;
                   idxCommit < commits[iGitmoji].length;
@@ -68,10 +73,12 @@ module.exports = {
                   commitlist[currRule].push(commits[iGitmoji][idxCommit]);
                 }
               }
-              console.log(commitlist);
               options.data.root["commits"] = commitlist;
             },
             hasKey: function (object, key) {
+              console.log("====");
+              console.log(object);
+              console.log(key);
               if (Object.prototype.hasOwnProperty.call(object, key))
                 return true;
               return false;
