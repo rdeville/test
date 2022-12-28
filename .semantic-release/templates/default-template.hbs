@@ -16,11 +16,17 @@
 {{/if}}
 {{/with}}
 
-{{#with commits}}
-### New Test
-{{#each .}}
-{{#if (commit.semver == major)}}
-foo
-{{/if
+{{commitlist commits}}
+### Major
+{{#each commits}}
+{{#if (isSemver this.semver "major")}}
+{{this.subject}}
+{{/if}}
 {{/each}}
-{{/with}}
+
+### Minor
+{{#each commits}}
+{{#if (isSemver this.semver "minor")}}
+{{this.subject}}
+{{/if}}
+{{/each}}

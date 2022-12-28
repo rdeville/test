@@ -13,6 +13,20 @@ const template = readFileAsync(path.join(TEMPLATE_DIR, "default-template.hbs"));
 const MAJOR = "major";
 const MINOR = "minor";
 const PATCH = "patch";
+const RULES = {
+  major: gitmojis
+    .filter(({ semver }) => semver === MAJOR)
+    .map(({ emoji }) => emoji),
+  minor: gitmojis
+    .filter(({ semver }) => semver === MINOR)
+    .map(({ emoji }) => emoji),
+  patch: gitmojis
+    .filter(({ semver }) => semver === PATCH)
+    .map(({ emoji }) => emoji),
+  others: gitmojis
+    .filter(({ semver }) => semver === null)
+    .map(({ emoji }) => emoji),
+};
 
 module.exports = {
   branches: ["main"],
@@ -20,26 +34,45 @@ module.exports = {
     [
       "semantic-release-gitmoji",
       {
-        releaseRules: {
-          major: gitmojis
-            .filter(({ semver }) => semver === MAJOR)
-            .map(({ emoji }) => emoji),
-          minor: gitmojis
-            .filter(({ semver }) => semver === MINOR)
-            .map(({ emoji }) => emoji),
-          patch: gitmojis
-            .filter(({ semver }) => semver === PATCH)
-            .map(({ emoji }) => emoji),
-          others: gitmojis
-            .filter(({ semver }) => semver === null)
-            .map(({ emoji }) => emoji),
-        },
+        releaseRules: RULES,
         releaseNotes: {
           template,
           // partials: {commitTemplate},
           helpers: {
             datetime: function (format = "UTC:yyyy-mm-dd") {
               return dateFormat(new Date(), format);
+            },
+            commitlist: function (commits, options) {
+              let commitlist = {};
+              let currRule = "";
+              const rules = RULES;
+              for (const iGitmoji in commits) {
+                currRule = "";
+                for (const iRule in rules) {
+                  console.log(iRule);
+                  console.log(rules[iRule]);
+                  console.log(iGitmoji);
+                  if (iGitmoji in rules[iRule]) {
+                    console.log("===");
+                    if (Object.prototype.hasOwnProperty.call(commitlist, iRule))
+                      commitlist[iRule] = [];
+                    currRule = iRule;
+                  }
+                }
+                for (
+                  let idxCommit = 0;
+                  idxCommit < commits[iGitmoji].length;
+                  idxCommit++
+                ) {
+                  commitlist[currRule].push(commits[iGitmoji][idxCommit]);
+                }
+              }
+              options.data.root["commits"] = commitlist;
+              console.log(options.data.root);
+            },
+            isSemver: function (gitmojiSemver, rtype) {
+              if (gitmojiSemver == rtype) return true;
+              return false;
             },
           },
           issueResolution: {
