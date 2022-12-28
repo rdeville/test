@@ -73,12 +73,10 @@ module.exports = {
                   commitlist[currRule].push(commits[iGitmoji][idxCommit]);
                 }
               }
+              console.log(commitlist);
               options.data.root["commits"] = commitlist;
             },
             hasKey: function (object, key) {
-              console.log("====");
-              console.log(object);
-              console.log(key);
               if (Object.prototype.hasOwnProperty.call(object, key))
                 return true;
               return false;
