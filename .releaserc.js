@@ -37,7 +37,6 @@ module.exports = {
         releaseNotes: {
           template,
           // partials: {commitTemplate},
-          semver: true,
           helpers: {
             datetime: function (format = "UTC:yyyy-mm-dd") {
               return dateFormat(new Date(), format);
