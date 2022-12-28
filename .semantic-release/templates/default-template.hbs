@@ -15,3 +15,12 @@
 {{/each}}
 {{/if}}
 {{/with}}
+
+{{#with commits}}
+### New Test
+{{#each .}}
+{{#if (commit.semver == major)}}
+foo
+{{/if
+{{/each}}
+{{/with}}
