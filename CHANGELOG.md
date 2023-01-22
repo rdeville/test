@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## [v0.8.0](https://github.com/rdeville/test/compare/0.7.1...0.8.0) (2023-01-22)
+
+### Minor
+
+  * [`f273a64`](https://github.com/rdeville/test/commit/f273a64) ✨ Update releaserc config 
+
+### Patch
+
+  * [`0685e79`](https://github.com/rdeville/test/commit/0685e79) 🔧 Update releaserc config 
+  * [`e4b9746`](https://github.com/rdeville/test/commit/e4b9746) ➕ Add semantic release pullrequest 
+
+### Others
+
+  * [`d1d4650`](https://github.com/rdeville/test/commit/d1d4650) 💚 Update github CI workflow 
+  * [`e6779f1`](https://github.com/rdeville/test/commit/e6779f1) 💚 Fix CI
+
 ## [v0.7.1](https://github.com/rdeville/test/compare/0.7.0...0.7.1) (2023-01-22)
 
 ### Patch
