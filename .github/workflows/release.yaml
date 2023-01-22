@@ -2,7 +2,7 @@ name: Release
 on:
   push:
     branches:
-      - "feature/semantic-release-config"
+      - main
 jobs:
   release:
     runs-on: ubuntu-latest
