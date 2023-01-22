@@ -120,17 +120,17 @@ module.exports = {
         baseRef: process.env.GITHUB_REF_NAME ?? "main",
         branch: `release/${process.env.GITHUB_REF_NAME ?? "main"}`,
         pullrequestTitle:
-          "🔖 Update CHANGELOG for release <%= nextRelease.version ?  ${nextRelease.version}` : '' %>",
+          "🔖 Update release <%= nextRelease.version ?  ${nextRelease.version}` : '' %>",
       },
     ],
-    // [
-    //   "@semantic-release/git",
-    //   {
-    //     assets: ["CHANGELOG.md"],
-    //     message:
-    //       "🔖 Update CHANGELOG for release ${nextRelease.version} [skip-ci]\n\n${nextRelease.notes}",
-    //   },
-    // ],
+    [
+      "@semantic-release/git",
+      {
+        assets: ["CHANGELOG.md"],
+        message:
+          "🔖 Update CHANGELOG for release ${nextRelease.version} [skip-ci]\n\n${nextRelease.notes}",
+      },
+    ],
   ],
   tagFormat: "${version}",
 };
