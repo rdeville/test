@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [v0.8.6](https://github.com/rdeville/test/compare/0.8.5...0.8.6) (2023-01-22)
+
+### Patch
+
+  * [`1d59b0a`](https://github.com/rdeville/test/commit/1d59b0a) 🔧 Update releaserc
+
 ## [v0.8.5](https://github.com/rdeville/test/compare/0.8.4...0.8.5) (2023-01-22)
 
 ### Patch
