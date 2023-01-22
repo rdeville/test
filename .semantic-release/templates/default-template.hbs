@@ -17,33 +17,27 @@
 {{/with}}
 
 {{commitlist commits}}
-{{#if (hasKey commits "major")}}
+{{#with commits}}
+{{#if major}}
 ### Major
-{{#with commits}}
 {{#each major}}
-{{commit.subject}}
+  * {{> commitTemplate}}
 {{/each}}
-{{/with}}
 {{/if}}
 
 
-{{commitlist commits}}
-{{#if (hasKey commits "minor")}}
+{{#if minor}}
 ### Minor
-{{#with commits}}
 {{#each minor}}
-{{commit.subject}}
+  * {{> commitTemplate}}
 {{/each}}
-{{/with}}
 {{/if}}
 
 
-{{commitlist commits}}
-{{#if (hasKey commits "patch")}}
+{{#if patch}}
 ### Patch
-{{#with commits}}
 {{#each patch}}
-{{commit.subject}}
+  * {{> commitTemplate}}
 {{/each}}
-{{/with}}
 {{/if}}
+{{/with}}

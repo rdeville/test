@@ -9,6 +9,9 @@ const gitmojis = require("gitmojis").gitmojis;
 
 const TEMPLATE_DIR = "./.semantic-release/templates/";
 const template = readFileAsync(path.join(TEMPLATE_DIR, "default-template.hbs"));
+const commitTemplate = readFileAsync(
+  path.join(TEMPLATE_DIR, "commit-template.hbs")
+);
 
 const MAJOR = "major";
 const MINOR = "minor";
@@ -25,11 +28,26 @@ const RULES = {
     .map(({ emoji }) => emoji),
   others: gitmojis
     .filter(({ semver }) => semver === null)
-    .map(({ emoji }) => emoji),
+    .map(({ emoji }) => emoji)
+    .filter((emoji) => emoji != "👷"),
 };
 
 module.exports = {
-  branches: ["main"],
+  branches: [
+    "+([0-9])?(.{+([0-9]),x}).x",
+    "main",
+    "next",
+    "next-major",
+    {
+      name: "beta",
+      prerelease: true,
+    },
+    {
+      name: "alpha",
+      prerelease: true,
+    },
+  ],
+  // branches: ["main"],
   plugins: [
     [
       "semantic-release-gitmoji",
@@ -37,17 +55,18 @@ module.exports = {
         releaseRules: RULES,
         releaseNotes: {
           template,
-          // partials: {commitTemplate},
+          partials: { commitTemplate },
           helpers: {
             datetime: function (format = "UTC:yyyy-mm-dd") {
               return dateFormat(new Date(), format);
             },
             commitlist: function (commits, options) {
+              console.log(RULES);
               let commitlist = {};
-              let currRule = "not_defined";
+              let currRule = null;
               const rules = RULES;
               for (const iGitmoji in commits) {
-                currRule = "not_defined";
+                currRule = null;
                 for (const iRule in rules) {
                   if (rules[iRule].includes(iGitmoji)) {
                     if (
@@ -59,22 +78,17 @@ module.exports = {
                     break;
                   }
                 }
-                if (
-                  currRule == "not_defined" &&
-                  !Object.prototype.hasOwnProperty.call(commitlist, currRule)
-                ) {
-                  commitlist[currRule] = [];
+                if (currRule != null) {
+                  for (
+                    let idxCommit = 0;
+                    idxCommit < commits[iGitmoji].length;
+                    idxCommit++
+                  ) {
+                    commitlist[currRule].push(commits[iGitmoji][idxCommit]);
+                  }
                 }
-                for (
-                  let idxCommit = 0;
-                  idxCommit < commits[iGitmoji].length;
-                  idxCommit++
-                ) {
-                  commitlist[currRule].push(commits[iGitmoji][idxCommit]);
-                }
+                options.data.root["commits"] = commitlist;
               }
-              console.log(commitlist);
-              options.data.root["commits"] = commitlist;
             },
             hasKey: function (object, key) {
               if (Object.prototype.hasOwnProperty.call(object, key))
@@ -100,7 +114,6 @@ module.exports = {
         changelogTitle: "# CHANGELOG",
       },
     ],
-    "@semantic-release/github",
     [
       "@semantic-release/git",
       {
