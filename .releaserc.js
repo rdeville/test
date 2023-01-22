@@ -114,10 +114,19 @@ module.exports = {
       },
     ],
     [
+      "semantic-release-github-pullrequest",
+      {
+        assets: ["CHANGELOG.md"],
+        baseRef: process.env.GITHUB_REF_NAME ?? "main",
+        branch: `release/${process.env.GITHUB_REF_NAME ?? "main"}`,
+      },
+    ],
+    [
       "@semantic-release/git",
       {
         assets: ["CHANGELOG.md"],
-        message: "🔖 ${nextRelease.version} [skip-ci]\n\n${nextRelease.notes}",
+        message:
+          "🔖 Update CHANGELOG for release ${nextRelease.version} [skip-ci]\n\n${nextRelease.notes}",
       },
     ],
   ],
