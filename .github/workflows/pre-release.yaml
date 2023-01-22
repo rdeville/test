@@ -2,7 +2,8 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - "main"
+      - "next"
 jobs:
   pre-release:
     runs-on: ubuntu-latest
