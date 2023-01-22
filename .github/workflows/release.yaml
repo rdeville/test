@@ -16,7 +16,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          branch: "refs/heads/release/${{ GITHUB_BASE_REF }}"
+          branch: "refs/heads/release/${{ vars.GITHUB_BASE_REF }}"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
