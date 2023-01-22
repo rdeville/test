@@ -20,6 +20,7 @@
 {{#with commits}}
 {{#if major}}
 ### Major
+
 {{#each major}}
   * {{> commitTemplate}}
 {{/each}}
@@ -28,6 +29,7 @@
 
 {{#if minor}}
 ### Minor
+
 {{#each minor}}
   * {{> commitTemplate}}
 {{/each}}
@@ -36,8 +38,19 @@
 
 {{#if patch}}
 ### Patch
+
 {{#each patch}}
   * {{> commitTemplate}}
 {{/each}}
 {{/if}}
+
+
+{{#if patch}}
+### Others
+
+{{#each others}}
+  * {{> commitTemplate}}
+{{/each}}
+{{/if}}
+{{/with}}
 {{/with}}
