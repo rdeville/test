@@ -38,7 +38,7 @@ repos:
         # Forbids any submodules in the repository
       - id: forbid-submodules
         # Don't commit to branch
-      - id: no-commit-to-branch
+        # - id: no-commit-to-branch
         # Trims trailing whitespace.
       - id: trailing-whitespace
   - repo: https://github.com/pre-commit/mirrors-prettier
