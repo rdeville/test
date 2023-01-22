@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [v0.8.2](https://github.com/rdeville/test/compare/0.8.1...0.8.2) (2023-01-22)
+
+### Patch
+
+  * [`c8666f0`](https://github.com/rdeville/test/commit/c8666f0) 🔧 Update releaserc 
+
+### Others
+
 ## [v0.8.0](https://github.com/rdeville/test/compare/0.7.1...0.8.0) (2023-01-22)
 
 ### Minor
