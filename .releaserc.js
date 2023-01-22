@@ -120,7 +120,7 @@ module.exports = {
         baseRef: process.env.GITHUB_REF_NAME ?? "main",
         branch: `release/${process.env.GITHUB_REF_NAME ?? "main"}`,
         pullrequestTitle:
-          "🔖 Update release <%= nextRelease.version ?  ${nextRelease.version}` : '' %>",
+          "chore: Update release <%= nextRelease.version ?  ${nextRelease.version}` : '' %>",
       },
     ],
     [
