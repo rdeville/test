@@ -61,7 +61,6 @@ module.exports = {
               return dateFormat(new Date(), format);
             },
             commitlist: function (commits, options) {
-              console.log(RULES);
               let commitlist = {};
               let currRule = null;
               const rules = RULES;
