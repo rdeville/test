@@ -118,7 +118,7 @@ module.exports = {
       {
         assets: ["CHANGELOG.md"],
         message:
-          "🔖 Update CHANGELOG for release ${nextRelease.version} [skip-ci]\n\n${nextRelease.notes}",
+          "🔖 Release ${nextRelease.version} [skip-ci] with CHANGELOG\n\n${nextRelease.notes}",
       },
     ],
     "@semantic-release/github",
