@@ -1,8 +1,5 @@
 name: "Release from release/*"
 on:
-  push:
-    branches:
-      - release/*
   workflow_run:
     workflows: ["Pre-Release"]
     types:
@@ -11,11 +8,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          ref: "release/${{ github.ref_name }}"
+      - name: Switch Branch
+        run: "git checkout release/${{ github.ref_name }}"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
