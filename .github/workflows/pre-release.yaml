@@ -1,4 +1,4 @@
-name: Release
+name: Pre-Release
 on:
   push:
     branches:
@@ -17,21 +17,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: "refs/heads/release/${{ github.ref_name }}"
-      - name: Switch Branch
-        uses: actions/checkout@v3
-        with:
-          ref: "release/${{ github.ref_name }}"
-      - name: Show Branch
-        run: git branch
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Install dependencies
-        run: yarn install
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
-      - name: Release
-        run: git tag -d $(git describe --tag --abbrev=0)

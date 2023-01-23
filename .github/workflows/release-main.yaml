@@ -1,14 +1,16 @@
-name: "Release from release/*"
+name: Release from main
 on:
-  push:
-    branches:
-      - release/*
-  workflow_run:
-    workflows: ["CI release"]
+  pull_request:
     types:
-      - completed
+      - closed
+  push:
+    paths:
+      - CHANGELOG.md
+    branches:
+      - main
 jobs:
-  release:
+  if_merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
