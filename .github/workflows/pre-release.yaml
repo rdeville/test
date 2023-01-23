@@ -18,7 +18,9 @@ jobs:
         with:
           branch: "refs/heads/release/${{ github.ref_name }}"
       - name: Switch Branch
-        run: git checkout release/${{ github.ref_name }}
+        uses: actions/checkout@v3
+        with:
+          ref: "release/${{ github.ref_name }}"
       - name: Show Branch
         run: git branch
       - name: Setup Node.js
