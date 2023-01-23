@@ -19,7 +19,7 @@ jobs:
         with:
           branch: "refs/heads/release/${{ github.ref_name }}"
       - name: Switch to release branch
-        run: git checkout "refs/heads/release/${{ github.ref_name }}"
+        run: git checkout "release/${{ github.ref_name }}"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
