@@ -37,6 +37,7 @@ module.exports = {
     "+([0-9])?(.{+([0-9]),x}).x",
     "release/main",
     "next",
+    "next-major",
     {
       name: "beta",
       prerelease: true,
@@ -116,11 +117,9 @@ module.exports = {
       "@semantic-release/git",
       {
         assets: ["CHANGELOG.md"],
-        message:
-          "🔖 Release ${nextRelease.version} [skip-ci] with CHANGELOG\n\n${nextRelease.notes}",
+        message: "🔖 ${nextRelease.version} [skip-ci]\n\n${nextRelease.notes}",
       },
     ],
-    "@semantic-release/github",
   ],
   tagFormat: "${version}",
 };
