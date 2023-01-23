@@ -12,15 +12,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      # - name: Create Release Branch
-      #   uses: peterjgrainger/action-create-branch@v2.2.0
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     branch: "refs/heads/release/${{ github.ref_name }}"
-      # - uses: actions/checkout@v3
-      #   with:
-      #     ref: "release/${{ github.ref_name }}"
+      - name: Create Release Branch
+        uses: peterjgrainger/action-create-branch@v2.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: "refs/heads/release/${{ github.ref_name }}"
+      - uses: actions/checkout@v3
+        with:
+          ref: "release/${{ github.ref_name }}"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -31,3 +31,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+      - name: Release
+        run: git tag -d $(git describe --tag --abbrev=0)
