@@ -18,9 +18,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: "refs/heads/release/${{ github.ref_name }}"
-      - uses: actions/checkout@v3
-        with:
-          ref: "release/${{ github.ref_name }}"
+      - name: Switch to release branch
+        run: git checkout "refs/heads/release/${{ github.ref_name }}"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
