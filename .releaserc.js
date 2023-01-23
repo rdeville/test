@@ -35,9 +35,7 @@ const RULES = {
 module.exports = {
   branches: [
     "+([0-9])?(.{+([0-9]),x}).x",
-    "main",
-    "next",
-    "next-major",
+    "release/main",
     {
       name: "beta",
       prerelease: true,
